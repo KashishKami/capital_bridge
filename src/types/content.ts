@@ -22,6 +22,8 @@ export interface ContactInfo {
   address: string;
   hours?: string;
   accounting_email?: string;
+  linkedin?: string;
+  dat_directory?: string;
 }
 
 export interface TeamMember {

@@ -1,4 +1,5 @@
 # TDD Instruction Guide
+
 ## How to Write Checklists That Produce Rock-Solid, Fully Wired Features
 
 > **Who is this for?** Anyone — developer, product owner, or team lead — working on any software project. If you hand this guide to a complete beginner, they should be able to write a proper implementation checklist by the end of it.
@@ -13,11 +14,11 @@
 
 Every single checklist item must be **bookended** by these two things.
 
-**Root Cause** answers: *Why does this problem exist, or why does this feature need to be built?*
+**Root Cause** answers: _Why does this problem exist, or why does this feature need to be built?_
 It stops the developer (or AI) from guessing what to fix or build. Without it, they might fix the wrong thing, and the tests might still pass.
 
-**Verification Chain** answers: *What does success look like from the user's perspective, end to end?*
-It is not "tests pass." It is a human-readable sequence of events: *User does X → System does Y → User sees Z.*
+**Verification Chain** answers: _What does success look like from the user's perspective, end to end?_
+It is not "tests pass." It is a human-readable sequence of events: _User does X → System does Y → User sees Z._
 If the feature doesn't achieve this exact chain, it is not done — no matter what the tests say.
 
 > ❌ **Bad:** "Fix the navigation bug."
@@ -35,10 +36,11 @@ This is the most important principle and the one most commonly skipped.
 
 **Why?** If a test passes immediately after you write it (before writing the feature), it means the test is not actually testing reality. It is probably mocked incorrectly, or it is testing something that already works. A test that can't fail is worthless.
 
-**How to write it:** Every test instruction must end with: *"Run — confirm RED."*
+**How to write it:** Every test instruction must end with: _"Run — confirm RED."_
 
 > ❌ **Bad:** "Write a test for idempotency and then implement it."
 > ✅ **Good:**
+>
 > - [ ] **RED — Integration (`order.controller.test.ts`):**
 >   - [ ] Test: Two `POST /api/v1/orders` requests with the same `X-Idempotency-Key` both return the same `orderId`.
 >   - [ ] **Run — confirm RED (two separate orders are created today; the test will fail).**
@@ -56,11 +58,11 @@ This is exactly where the "phantom features" came from in Session 95. We had man
 
 You need **both**. A unit test alone is never sufficient for a feature that spans the backend and frontend.
 
-| Test Type | What It Proves | Is It Enough Alone? |
-|---|---|---|
-| Unit (component) test | The React component renders a `<Link>` tag | ❌ No. The backend might not serve the correct `productId`. |
-| Integration test | `GET /api/v1/products` returns `productId` in its response | ❌ No. The frontend might not use it to build the link. |
-| **Both together** | The full path from API → UI → correct navigation | ✅ Yes. |
+| Test Type             | What It Proves                                             | Is It Enough Alone?                                         |
+| --------------------- | ---------------------------------------------------------- | ----------------------------------------------------------- |
+| Unit (component) test | The React component renders a `<Link>` tag                 | ❌ No. The backend might not serve the correct `productId`. |
+| Integration test      | `GET /api/v1/products` returns `productId` in its response | ❌ No. The frontend might not use it to build the link.     |
+| **Both together**     | The full path from API → UI → correct navigation           | ✅ Yes.                                                     |
 
 ---
 
@@ -85,12 +87,12 @@ By listing each tier, you make it impossible to skip a step. If the Repository r
 
 The more vague an assertion is, the easier it is to pass with a bad implementation.
 
-**The rule:** State *exactly* what the test should assert. Name the HTTP method, the URL, the specific field name, the specific value, and the specific database state.
+**The rule:** State _exactly_ what the test should assert. Name the HTTP method, the URL, the specific field name, the specific value, and the specific database state.
 
 > ❌ **Bad assertion:** "Test that the order is created correctly."
 > ✅ **Good assertion:** "Test: Two `POST /api/v1/orders` calls with identical `X-Idempotency-Key: abc-123` both return the same `orderId`. After both calls, `SELECT COUNT(*) FROM orders WHERE user_id = ?` returns exactly `1`."
 
-The good assertion is so specific that there is only *one* correct implementation. The bad assertion can be passed by almost any implementation.
+The good assertion is so specific that there is only _one_ correct implementation. The bad assertion can be passed by almost any implementation.
 
 ---
 
@@ -143,15 +145,15 @@ Copy and fill this in for every checklist item you write. If a section is truly 
 
 Before you submit a checklist for implementation, run it through this rubric. If you can't answer YES to every question, the checklist is not ready.
 
-| # | Question | Why It Matters |
-|---|---|---|
-| 1 | Does every item have a **Root Cause** or **Goal**? | Without it, the wrong thing gets fixed or built. |
-| 2 | Does every test instruction end with **"Run — confirm RED"**? | Without it, tests are written but never actually run to failure. |
-| 3 | Is there **at least one integration test** that hits a real HTTP route? | Without it, phantom features exist — tests pass but the app is broken. |
-| 4 | Is there **at least one unit/component test** that tests the frontend in isolation? | Without it, the UI wiring is never verified. |
-| 5 | Are all tiers listed explicitly (Schema, Repo, Service, Controller, Frontend Type, Component)? | Without it, a tier gets skipped and the data never flows end-to-end. |
-| 6 | Are assertions **hyper-specific** (exact URLs, exact field names, exact expected DB state)? | Without it, a flawed implementation can still pass the test. |
-| 7 | Does every item end with a **Verification Chain** in plain English? | Without it, "done" is defined by tests, not by whether the user's experience is correct. |
+| #   | Question                                                                                       | Why It Matters                                                                           |
+| --- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| 1   | Does every item have a **Root Cause** or **Goal**?                                             | Without it, the wrong thing gets fixed or built.                                         |
+| 2   | Does every test instruction end with **"Run — confirm RED"**?                                  | Without it, tests are written but never actually run to failure.                         |
+| 3   | Is there **at least one integration test** that hits a real HTTP route?                        | Without it, phantom features exist — tests pass but the app is broken.                   |
+| 4   | Is there **at least one unit/component test** that tests the frontend in isolation?            | Without it, the UI wiring is never verified.                                             |
+| 5   | Are all tiers listed explicitly (Schema, Repo, Service, Controller, Frontend Type, Component)? | Without it, a tier gets skipped and the data never flows end-to-end.                     |
+| 6   | Are assertions **hyper-specific** (exact URLs, exact field names, exact expected DB state)?    | Without it, a flawed implementation can still pass the test.                             |
+| 7   | Does every item end with a **Verification Chain** in plain English?                            | Without it, "done" is defined by tests, not by whether the user's experience is correct. |
 
 ---
 
@@ -160,6 +162,7 @@ Before you submit a checklist for implementation, run it through this rubric. If
 **The Bug:** The `SearchResultsPage` navigates to `/search?q=Dairy` when a user clicks the "Dairy" subcategory result. It should navigate to `/categories/groceries/dairy`. The search API also doesn't return the `categorySlug` needed to build the correct URL.
 
 > ✅ **Check this example against the rubric:**
+>
 > 1. Root Cause? ✅
 > 2. "Run — confirm RED"? ✅
 > 3. Integration test on real HTTP route? ✅ (`GET /api/v1/search?q=<term>`)
@@ -170,7 +173,7 @@ Before you submit a checklist for implementation, run it through this rubric. If
 >
 > **Verdict: GREAT CHECKLIST ✅**
 
-```markdown
+````markdown
 #### W-012 — Subcategory Click in Search Results Uses Wrong Route
 
 **Root cause:**
@@ -189,30 +192,30 @@ response. Update `SearchResultsPage` to use the new field for navigation.
 
 - [ ] **RED — Integration (`search.controller.test.ts`):**
   - [ ] Test: `GET /api/v1/search?q=dairy` returns subcategory items where each item
-    includes BOTH a `slug` field AND a `categorySlug` field.
+        includes BOTH a `slug` field AND a `categorySlug` field.
   - [ ] Test: The `categorySlug` value matches the parent category's slug
-    (e.g., `"groceries"`, not `null` or `undefined`).
+        (e.g., `"groceries"`, not `null` or `undefined`).
   - [ ] **Run — confirm RED (the `categorySlug` field is absent from the current response).**
 
 - [ ] **GREEN — Backend (Repository → Controller):**
   - [ ] [Repository] In `search.repository.ts`, update the subcategory query to include
-    `category: { select: { slug: true } }` in the Prisma `include` block.
+        `category: { select: { slug: true } }` in the Prisma `include` block.
   - [ ] [Controller] In `search.controller.ts`, update the subcategory serializer to
-    add `categorySlug: subCategory.category.slug` to each result object.
+        add `categorySlug: subCategory.category.slug` to each result object.
   - [ ] Run integration test — **confirm GREEN**.
 
 - [ ] **RED — Unit (`SearchResultsPage.test.tsx`):**
   - [ ] Test: When a subcategory result with `{ slug: 'dairy', categorySlug: 'groceries' }`
-    is clicked, the component calls `navigate('/categories/groceries/dairy')`.
+        is clicked, the component calls `navigate('/categories/groceries/dairy')`.
   - [ ] Test: When a subcategory result has a missing `categorySlug`, the component
-    falls back to `navigate('/search?q=Dairy')` (safety net).
+        falls back to `navigate('/search?q=Dairy')` (safety net).
   - [ ] **Run — confirm RED (the component currently always calls `/search?q=...`).**
 
 - [ ] **GREEN — Frontend (Types → Component):**
   - [ ] [Types] Add `categorySlug?: string` to the `SearchResultItem` type in
-    `SearchResultsPage.tsx`.
+        `SearchResultsPage.tsx`.
   - [ ] [Component] Replace the hardcoded `navigate('/search?q=${sub.name}')` in the
-    subcategory button's `onClick` handler with:
+        subcategory button's `onClick` handler with:
     ```typescript
     if (sub.categorySlug && sub.slug) {
       navigate(`/categories/${sub.categorySlug}/${sub.slug}`);
@@ -224,10 +227,10 @@ response. Update `SearchResultsPage` to use the new field for navigation.
 
 - [ ] **Verification chain:**
   - [ ] User types "dairy" in the search bar → Search Results page shows a
-    "Dairy" subcategory card → User clicks it → Browser navigates to
-    `/categories/groceries/dairy` → `SubCategoryPage` renders the list of
-    dairy products from the database → ✅ Done.
-```
+        "Dairy" subcategory card → User clicks it → Browser navigates to
+        `/categories/groceries/dairy` → `SubCategoryPage` renders the list of
+        dairy products from the database → ✅ Done.
+````
 
 ---
 
@@ -236,6 +239,7 @@ response. Update `SearchResultsPage` to use the new field for navigation.
 **The Feature:** Implement idempotency on `POST /api/v1/orders`. A user who double-taps "Place Order" or whose network retries the request should not get duplicate orders.
 
 > ✅ **Check this example against the rubric:**
+>
 > 1. Root Cause? ✅ (quotes the spec rule)
 > 2. "Run — confirm RED"? ✅ (twice — once for integration, once for unit)
 > 3. Integration test on real HTTP route? ✅ (tests `POST /api/v1/orders` twice)
@@ -246,7 +250,7 @@ response. Update `SearchResultsPage` to use the new field for navigation.
 >
 > **Verdict: GREAT CHECKLIST ✅**
 
-```markdown
+````markdown
 #### W-014 — Idempotency Key Not Honoured on POST /api/v1/orders
 
 **Goal:**
@@ -266,58 +270,58 @@ return the response.
 
 - [ ] **RED — Integration (`order.controller.test.ts`):**
   - [ ] Test: Make `POST /api/v1/orders` with header `X-Idempotency-Key: test-key-abc`.
-    Receive a response with an `orderId`. Make the **exact same request again**
-    with the **same header**. Assert both responses contain the **same `orderId`**.
+        Receive a response with an `orderId`. Make the **exact same request again**
+        with the **same header**. Assert both responses contain the **same `orderId`**.
   - [ ] Test: After both requests, query the database and assert there is exactly
-    **ONE `Order` row** for this buyer.
+        **ONE `Order` row** for this buyer.
   - [ ] Test: Make a `POST /api/v1/orders` request **without** the header. Assert it
-    still works normally (idempotency is optional, not enforced).
+        still works normally (idempotency is optional, not enforced).
   - [ ] **Run — confirm RED (two separate orders are created by the two requests today).**
 
 - [ ] **GREEN — Backend (Controller → Routes wiring):**
   - [ ] [Deps] Add `redis: RedisClientType` to the `RegisterOrderDeps` type in
-    `order.controller.ts`.
+        `order.controller.ts`.
   - [ ] [Controller] At the start of the `POST /api/v1/orders` handler, before any
-    other logic:
+        other logic:
     - Read `const key = request.headers['x-idempotency-key']`.
     - If `key` is present, check Redis for `await redis.get('idempotency:${buyerId}:${key}')`.
     - If a value is found (cache hit), `return reply.send(JSON.parse(cachedValue))`.
     - If nothing found (cache miss), continue with `placeFromCart`. After receiving
       the result, `await redis.set('idempotency:${buyerId}:${key}', JSON.stringify(result), { EX: 86400 })`.
   - [ ] [Routes] In `routes.ts`, update the call to `registerOrderRoutes` to pass in
-    the Redis client alongside its existing dependencies.
+        the Redis client alongside its existing dependencies.
   - [ ] Run integration test — **confirm GREEN**.
 
 - [ ] **RED — Unit (`order.controller.unit.test.ts`):**
   - [ ] Set up: Mock the `placeFromCart` service and the Redis client.
   - [ ] Test (cache hit): Pre-populate the mock Redis with a value at the expected key.
-    Call the handler. Assert `placeFromCart` was called **zero times** and the
-    response is the pre-populated cached data.
+        Call the handler. Assert `placeFromCart` was called **zero times** and the
+        response is the pre-populated cached data.
   - [ ] Test (cache miss): Mock Redis to return `null`. Call the handler. Assert
-    `placeFromCart` was called **exactly once** and that Redis `set` was called
-    with the result.
+        `placeFromCart` was called **exactly once** and that Redis `set` was called
+        with the result.
   - [ ] **Run — confirm RED (the controller has no Redis logic, so the mocks are never called).**
 
 - [ ] **GREEN — Frontend (No frontend changes needed):**
   - [ ] The frontend must send the `X-Idempotency-Key` header when placing an order.
-    In `CheckoutPage.tsx`, generate a UUID before the API call:
+        In `CheckoutPage.tsx`, generate a UUID before the API call:
     ```typescript
-    import { v4 as uuidv4 } from 'uuid';
+    import { v4 as uuidv4 } from "uuid";
     // Inside placeOrder handler:
     const idempotencyKey = uuidv4();
-    await api.post('/api/v1/orders', payload, {
-      headers: { 'X-Idempotency-Key': idempotencyKey }
+    await api.post("/api/v1/orders", payload, {
+      headers: { "X-Idempotency-Key": idempotencyKey },
     });
     ```
   - [ ] Run unit test — **confirm GREEN**.
 
 - [ ] **Verification chain:**
   - [ ] User fills in checkout form and double-taps the "Place Order" button rapidly
-    (simulating a slow network) → Two `POST /api/v1/orders` requests fire with
-    the same `X-Idempotency-Key` → The second request hits the Redis cache and
-    returns the first order's response instantly → The database contains exactly
-    one `Order` row → User sees the single Order Confirmation page → ✅ Done.
-```
+        (simulating a slow network) → Two `POST /api/v1/orders` requests fire with
+        the same `X-Idempotency-Key` → The second request hits the Redis cache and
+        returns the first order's response instantly → The database contains exactly
+        one `Order` row → User sees the single Order Confirmation page → ✅ Done.
+````
 
 ---
 
@@ -328,6 +332,6 @@ If you only remember one thing from this guide, make it this:
 > **A feature is not done when the tests pass.**
 > **A feature is done when the Verification Chain is achieved in the real, running application.**
 
-Tests are the tool that proves the Verification Chain is achieved *every time*, automatically. But the Verification Chain itself is the true definition of done.
+Tests are the tool that proves the Verification Chain is achieved _every time_, automatically. But the Verification Chain itself is the true definition of done.
 
 If you start from the Verification Chain and work backwards (what frontend state is needed? what API response is needed? what DB schema is needed?), you will naturally write great checklists every time.

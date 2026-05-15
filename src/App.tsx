@@ -1,16 +1,23 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import PreLoader from './components/PreLoader';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Team from './pages/Team';
-import ServicePage from './pages/ServicePage';
-import Footer from './components/Footer';
-import Lenis from 'lenis';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import PreLoader from "./components/PreLoader";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Team from "./pages/Team";
+import ServicePage from "./pages/ServicePage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import Footer from "./components/Footer";
+import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,14 +45,14 @@ function App() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      orientation: "vertical",
+      gestureOrientation: "vertical",
       smoothWheel: true,
       touchMultiplier: 2,
     });
 
     setLenisInstance(lenis);
-    lenis.on('scroll', ScrollTrigger.update);
+    lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
@@ -67,9 +74,9 @@ function App() {
       <div className="app-container">
         <ScrollToTop lenis={lenisInstance} />
         <Navbar />
-        
+
         {!showHero && <PreLoader onComplete={handlePreLoaderComplete} />}
-        
+
         {showHero && (
           <>
             <Routes>
@@ -77,10 +84,20 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/our-team" element={<Team />} />
-              
+
               {/* Dynamic Service/Solution Routes */}
-              <Route path="/solutions/:id" element={<ServicePage type="solutions" />} />
-              <Route path="/services/:id" element={<ServicePage type="industries" />} />
+              <Route
+                path="/solutions/:id"
+                element={<ServicePage type="solutions" />}
+              />
+              <Route
+                path="/services/:id"
+                element={<ServicePage type="industries" />}
+              />
+
+              {/* Legal Routes */}
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
             </Routes>
             <Footer />
           </>

@@ -1,13 +1,15 @@
 # Capital Bridge Logistics - Frontend Redesign & Modernization
 
 ## 1. Project Overview
+
 **Goal:** Transform the current static, dated website into a premium, high-tech, kinetic web experience comparable to Apple or Nike standards.
 **Constraint:** The underlying page structure, routes, and text content must remain identical to the original site. The changes are strictly UI/UX, styling, animations, and component refactoring.
 **Key Technologies:** React, TypeScript, GSAP (for scroll triggers and animations), CSS Modules/Tailwind (for glassmorphism and modern theming).
 
 ## 2. Current State
+
 - **Status:** Project Initialized.
-- **Completed Work:** 
+- **Completed Work:**
   - Initial site audit and UX teardown.
   - TDD standards established via `TDD_INSTRUCTION_GUIDE.md`.
 - **Current Active Phase:** Phase 1 (Foundation & Design System)
@@ -17,14 +19,15 @@
 ## 3. Implementation Roadmap
 
 ### Phase 1: Foundation & Design System (Currently Active)
+
 Establish the base repository, design tokens, typography, core routing structure, and data layer before building any complex UI.
 
 #### [Feature: Content Extraction & Data Structuring]
 
-**Root cause / Goal:** 
+**Root cause / Goal:**
 We cannot implement Content-Driven Design without the actual content. Hardcoding "Lorem Ipsum" or scattering text throughout UI components leads to layout breakages and poor maintainability. We need a centralized single source of truth for all website text.
 
-**Fix / Approach:** 
+**Fix / Approach:**
 Scrape the existing live website and structure the text into a central data file (e.g., `src/data/content.ts`). This file will export typed objects for the Hero, Features, Testimonials, and inner pages so the UI components can consume them purely as props.
 
 ---
@@ -52,10 +55,10 @@ Scrape the existing live website and structure the text into a central data file
 
 #### [Feature: Core Theme and Global Styles Initialization]
 
-**Root cause / Goal:** 
+**Root cause / Goal:**
 The application needs a unified premium design system (colors, typography, spacing) to ensure consistency across all pages. Without it, developers will hardcode values, leading to a fragmented UI.
 
-**Fix / Approach:** 
+**Fix / Approach:**
 Configure the global CSS/theme provider with the "Midnight Navy" and "Electric Cyan" color palette. Import `Inter` and `Outfit` web fonts. Set up CSS variables for glassmorphism effects and animation timings.
 
 ---
@@ -83,14 +86,15 @@ Configure the global CSS/theme provider with the "Midnight Navy" and "Electric C
 ---
 
 ### Phase 2: The Hero Section & Pre-loader Animation
+
 Implement the high-impact "Truck wipe" pre-loader and the animated hero section.
 
 #### [Feature: Truck Wipe Pre-loader & Hero Reveal]
 
-**Root cause / Goal:** 
+**Root cause / Goal:**
 The homepage needs an explosive "Wow" factor. A static image is boring. We need a 1.2 to 1.5-second pre-loader where a stylized truck wipes the screen to reveal the hero section, establishing the brand's kinetic energy immediately.
 
-**Fix / Approach:** 
+**Fix / Approach:**
 Create a `PreLoader` component containing the truck SVG/3D asset. Use GSAP to animate the truck horizontally across the screen, tying a `clip-path` or mask to its X-axis position to safely reveal the `Hero` component beneath it.
 
 ---
@@ -117,14 +121,15 @@ Create a `PreLoader` component containing the truck SVG/3D asset. Use GSAP to an
 ---
 
 ### Phase 3: Bento-Box Feature Cards & Scroll Triggers
+
 Refactor the "Technology", "Quick Quotes", and "Customer Service" sections into a modern grid.
 
 #### [Feature: Scroll-Triggered Bento Box Grid]
 
-**Root cause / Goal:** 
+**Root cause / Goal:**
 The features section is currently a static wall of text. We need to organize this into a scannable Bento-Box grid that animates smoothly as the user scrolls down, increasing engagement and perceived value.
 
-**Fix / Approach:** 
+**Fix / Approach:**
 Build a `BentoGrid` component. Use GSAP `ScrollTrigger` to animate the individual `BentoCard` components (slide up and fade in) when they enter the viewport.
 
 ---
@@ -152,6 +157,7 @@ Build a `BentoGrid` component. Use GSAP `ScrollTrigger` to animate the individua
 ---
 
 ### Phase 4: Premium Design Overhaul & Smooth Scroll Engine (Next)
+
 Eradicate the "AI-generated" look by elevating the design system to a true Apple/Stripe-tier aesthetic and integrating Lenis Smooth Scroll.
 
 #### [Feature: Design System Overhaul & Lenis Integration]
@@ -185,6 +191,7 @@ Rewrite CSS variables to use the logo's native White and Yellow as the primary h
   - [x] User scrolls down → The movement has weight and momentum (Lenis) → The aesthetic feels incredibly expensive, structural, and tactile → ✅ Done.
 
 ### Phase 5: Inner Pages Architecture & Routing (Next)
+
 Build out the structural foundation and components for the remaining pages of the original website (About Us, Services, Contact, etc.) using `react-router-dom` and the newly established design system.
 
 #### [Feature: Multi-Page Routing & Inner Page Components]
@@ -193,7 +200,7 @@ Build out the structural foundation and components for the remaining pages of th
 The homepage is built, but the original Capital Bridge website has multiple inner pages. We need a robust client-side routing system and modular layout components to render the inner pages without breaking the SPA experience or smooth scroll.
 
 **Fix / Approach:**
-Install `react-router-dom`. Refactor the current Homepage into `src/pages/Home.tsx`. Scaffold `src/pages/About.tsx`, `src/pages/Services.tsx`, and `src/pages/Contact.tsx`. 
+Install `react-router-dom`. Refactor the current Homepage into `src/pages/Home.tsx`. Scaffold `src/pages/About.tsx`, `src/pages/Services.tsx`, and `src/pages/Contact.tsx`.
 
 ---
 
@@ -220,6 +227,7 @@ Install `react-router-dom`. Refactor the current Homepage into `src/pages/Home.t
 ---
 
 ### Phase 6: Testimonials Marquee & Premium Footer (Future)
+
 Implement the GSAP infinite horizontal scroll marquee for testimonials and the final responsive footer.
 
 #### [Feature: Kinetic Testimonial Marquee & Footer]
@@ -252,6 +260,7 @@ Build `TestimonialMarquee.tsx` utilizing GSAP and `Footer.tsx` with full brand t
   - [x] User scrolls to bottom of page → Testimonials endlessly loop horizontally → User hovers to pause and read → ✅ Done.
 
 ### Phase 7: Verbatim Page Restoration & Service Hierarchy (Currently Active)
+
 Populate all scaffolded pages (and create missing ones) with the exact text content from the vault, ensuring the site matches the original architecture (Solutions/Services dropdowns).
 
 #### [Feature: Content Migration & Inner Page Fidelity]
@@ -288,12 +297,14 @@ Migrate all vault markdown files into a structured `src/data/content.ts`. Create
 ---
 
 ### Phase 8: Contact Page Form & Mapbox Integration (Future)
+
 Implement the floating label contact form and a high-end, dark-mode Mapbox integration for the Glenview HQ.
 
 ---
 
 ## 4. Session Notes (Append-Only)
-*Coding agents: After completing a unit of work or ending a session, append a brief timestamped log here detailing what was accomplished, any unresolved issues, and the next immediate step. Do not modify or delete past entries.*
+
+_Coding agents: After completing a unit of work or ending a session, append a brief timestamped log here detailing what was accomplished, any unresolved issues, and the next immediate step. Do not modify or delete past entries._
 
 - **[2026-05-14]** - Project initialized. Site audit completed. TDD standards mapped and `current_state.md` master document created. Ready for Phase 1 execution (Content Extraction).
 - **[2026-05-14]** - Phase 5 Inner Pages Architecture & Routing executed successfully. Installed `react-router-dom`, refactored homepage into its own component, and scaffolded About, Services, and Contact pages. Implemented a fixed glassmorphism Navbar with active route highlighting. Integrated `ScrollToTop` logic with Lenis to ensure smooth transitions between routes. All E2E routing tests passed (GREEN).
