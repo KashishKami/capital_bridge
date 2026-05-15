@@ -42,9 +42,11 @@ const StatsSection = () => {
     }, sectionRef);
 
     const animateNumbers = () => {
-      const statItems = document.querySelectorAll(".stat-value");
-      statItems.forEach((el: HTMLElement) => {
+      const statItems = document.querySelectorAll<HTMLElement>(".stat-value");
+      statItems.forEach((el) => {
         const targetValue = el.getAttribute("data-target");
+        if (!targetValue) return;
+
         const match = targetValue.match(/(\d+)(.*)/);
         if (!match) return;
 
