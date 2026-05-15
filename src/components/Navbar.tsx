@@ -97,7 +97,8 @@ const Navbar = () => {
           alignItems: "center",
           height: "100%",
           zIndex: 1001,
-          padding: "2px 0"
+          padding: "2px 0",
+          overflow: "hidden", // Only cut off the logo here
         }}
       >
         <img

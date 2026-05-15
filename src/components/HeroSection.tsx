@@ -40,7 +40,7 @@ const HeroSection: React.FC = () => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        padding: "0 20px",
+        padding: "100px 20px 0",
         position: "relative",
         overflow: "hidden",
         // Fallback gradient just in case we don't add the video yet
