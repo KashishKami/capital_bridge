@@ -523,7 +523,7 @@ const Navbar = () => {
           from { opacity: 0; transform: translateY(-20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        @media (max-width: 1024px) {
+        @media (max-width: 1380px) {
           .nav-desktop { display: none !important; }
           .nav-mobile-controls { display: flex !important; align-items: center; }
         }

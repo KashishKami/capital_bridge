@@ -56,13 +56,14 @@ const About = () => {
         <div
           className="reveal-text"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "4rem",
             marginTop: "6rem",
           }}
         >
-          <div>
+          <div style={{ flex: "1 1 250px", maxWidth: "400px" }}>
             <h3
               style={{
                 fontSize: "1.2rem",
@@ -78,7 +79,7 @@ const About = () => {
               expertise needed to compete on a global scale.
             </p>
           </div>
-          <div>
+          <div style={{ flex: "1 1 250px", maxWidth: "400px" }}>
             <h3
               style={{
                 fontSize: "1.2rem",

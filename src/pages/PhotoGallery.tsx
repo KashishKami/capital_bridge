@@ -73,8 +73,9 @@ const PhotoGallery = () => {
 
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: "2rem",
           maxWidth: "1400px",
           margin: "0 auto",
@@ -92,6 +93,8 @@ const PhotoGallery = () => {
               background: "var(--bg-secondary)",
               border: "1px solid var(--glass-border)",
               cursor: "pointer",
+              flex: "1 1 350px",
+              maxWidth: "450px",
             }}
           >
             <img

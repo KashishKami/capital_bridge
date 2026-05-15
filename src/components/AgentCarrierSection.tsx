@@ -29,8 +29,9 @@ const AgentCarrierSection = () => {
     >
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: "2rem",
           maxWidth: "1400px",
           margin: "0 auto",
@@ -45,6 +46,8 @@ const AgentCarrierSection = () => {
             border: "1px solid var(--glass-border)",
             borderRadius: "32px",
             position: "relative",
+            flex: "1 1 300px",
+            maxWidth: "600px",
           }}
         >
           <span
@@ -91,6 +94,8 @@ const AgentCarrierSection = () => {
             border: "1px solid var(--color-accent)",
             borderRadius: "32px",
             color: "#000",
+            flex: "1 1 300px",
+            maxWidth: "600px",
           }}
         >
           <span

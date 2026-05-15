@@ -59,10 +59,9 @@ const TeamPage = () => {
       <div
         className="team-grid"
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
           justifyContent: "center",
-          justifyItems: "center",
           gap: "2rem",
           maxWidth: "1200px",
           margin: "0 auto",
@@ -82,7 +81,7 @@ const TeamPage = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              width: "100%",
+              flex: "1 1 280px",
               maxWidth: "340px",
             }}
           >
@@ -181,14 +180,9 @@ const TeamPage = () => {
 
 
       <style>{`
-        @media (max-width: 1024px) {
-          .team-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-          }
-        }
         @media (max-width: 640px) {
-          .team-grid {
-            grid-template-columns: 1fr !important;
+          .team-card {
+            max-width: 100% !important;
           }
         }
       `}</style>

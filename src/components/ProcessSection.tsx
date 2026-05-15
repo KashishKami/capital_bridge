@@ -48,6 +48,8 @@ const ProcessStep = ({ step, idx }: { step: { title: string }; idx: number }) =>
         textAlign: "center",
         cursor: "default",
         transition: "border-color 0.3s ease",
+        flex: "1 1 140px",
+        maxWidth: "300px",
       }}
     >
       {/* Subtle background glow when hovered */}
@@ -139,8 +141,9 @@ const ProcessSection = () => {
 
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "clamp(1rem, 3vw, 2rem)",
           }}
         >

@@ -50,8 +50,9 @@ const Services = () => {
 
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: "2rem",
         }}
       >
@@ -74,6 +75,8 @@ const Services = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
+                flex: "1 1 300px",
+                maxWidth: "400px",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-10px)";

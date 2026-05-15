@@ -80,8 +80,9 @@ const ServicePage = ({ type }: { type: "solutions" | "industries" }) => {
       {content.highlights && (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "1.5rem",
             marginTop: "4rem",
           }}
@@ -96,6 +97,8 @@ const ServicePage = ({ type }: { type: "solutions" | "industries" }) => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid var(--glass-border)",
                 borderRadius: "12px",
+                flex: "1 1 200px",
+                maxWidth: "300px",
               }}
             >
               <h3 style={{ fontSize: "1.1rem", fontWeight: 700 }}>
@@ -109,8 +112,9 @@ const ServicePage = ({ type }: { type: "solutions" | "industries" }) => {
       {content.features && (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "2rem",
             marginTop: "4rem",
           }}
@@ -126,6 +130,8 @@ const ServicePage = ({ type }: { type: "solutions" | "industries" }) => {
                 border: "1px solid var(--glass-border)",
                 borderRadius: "16px",
                 transition: "transform 0.3s ease",
+                flex: "1 1 300px",
+                maxWidth: "450px",
               }}
             >
               <h3
@@ -162,13 +168,14 @@ const ServicePage = ({ type }: { type: "solutions" | "industries" }) => {
         </h2>
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "2rem",
           }}
         >
           {siteContent.home.features.map((f) => (
-            <div key={f.id} className="reveal-card">
+            <div key={f.id} className="reveal-card" style={{ flex: "1 1 250px", maxWidth: "350px" }}>
               <h4 style={{ fontWeight: 700, marginBottom: "0.5rem" }}>
                 {f.title}
               </h4>

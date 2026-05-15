@@ -82,8 +82,9 @@ const StatsSection = () => {
       <div
         ref={statsContainerRef}
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: "clamp(1rem, 3vw, 2rem)",
           maxWidth: "1200px",
           margin: "0 auto",
@@ -92,7 +93,7 @@ const StatsSection = () => {
         }}
       >
         {siteContent.home.stats.map((stat, idx) => (
-          <div key={idx} className="stat-item">
+          <div key={idx} className="stat-item" style={{ flex: "1 1 130px", maxWidth: "250px" }}>
             <h2
               className="stat-value"
               data-target={stat.value}

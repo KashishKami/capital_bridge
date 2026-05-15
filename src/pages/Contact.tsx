@@ -78,8 +78,9 @@ const Contact = () => {
       >
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "2rem",
           }}
         >
@@ -91,6 +92,8 @@ const Contact = () => {
               borderRadius: "32px",
               border: "1px solid var(--glass-border)",
               boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+              flex: "1 1 500px",
+              maxWidth: "800px",
             }}
           >
             <h2
@@ -264,7 +267,7 @@ const Contact = () => {
 
           {/* Contact Info */}
           <div
-            style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
+            style={{ display: "flex", flexDirection: "column", gap: "3rem", flex: "1 1 300px", maxWidth: "500px" }}
           >
             <div>
               <h2

@@ -30,10 +30,10 @@ const TestimonialsSection: React.FC = () => {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "2rem",
+          display: "flex",
+          flexWrap: "wrap",
           justifyContent: "center",
+          gap: "2rem",
         }}
       >
         {siteContent.home.testimonials.map((t) => (
@@ -52,6 +52,8 @@ const TestimonialsSection: React.FC = () => {
               justifyContent: "space-between",
               boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
               transition: "transform 0.3s ease",
+              flex: "1 1 320px",
+              maxWidth: "400px",
             }}
           >
             <div>
