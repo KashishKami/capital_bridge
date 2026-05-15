@@ -67,7 +67,7 @@ const TeamPage = () => {
           margin: "0 auto",
         }}
       >
-        {siteContent.team.map((member, index) => (
+        {siteContent.team.map((member) => (
           <div
             key={member.id}
             className="team-card"
