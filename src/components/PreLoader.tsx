@@ -31,11 +31,14 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
     gsap.set(truckRef.current, { x: -300 });
     gsap.set(maskRef.current, { width: "100%", right: 0 });
 
+    const isMobile = window.innerWidth <= 768;
+    const duration = isMobile ? 1.0 : 1.5;
+
     tl.to(
       truckRef.current,
       {
         x: window.innerWidth + 300,
-        duration: 1.5,
+        duration: duration,
         ease: "power2.inOut",
       },
       0,
@@ -46,7 +49,7 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
       maskRef.current,
       {
         width: "0%",
-        duration: 1.5,
+        duration: duration,
         ease: "power2.inOut",
       },
       0,

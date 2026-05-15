@@ -85,7 +85,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ feature, index }) => {
         WebkitBackdropFilter: "blur(20px)",
         border: "1px solid var(--glass-border)",
         borderRadius: "24px",
-        padding: "3rem 2rem",
+        padding: "clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -120,7 +120,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ feature, index }) => {
       <div>
         <h2
           style={{
-            fontSize: "2rem",
+            fontSize: "clamp(1.5rem, 6vw, 2rem)",
             marginBottom: "1rem",
             color: "var(--text-main)",
           }}

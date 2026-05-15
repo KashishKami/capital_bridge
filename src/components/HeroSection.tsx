@@ -52,7 +52,7 @@ const HeroSection: React.FC = () => {
         <h1
           ref={headingRef}
           style={{
-            fontSize: "clamp(2.5rem, 6vw, 5rem)",
+            fontSize: "clamp(2rem, 8vw, 5rem)",
             fontWeight: 900,
             marginBottom: "1.5rem",
             lineHeight: 1.1,

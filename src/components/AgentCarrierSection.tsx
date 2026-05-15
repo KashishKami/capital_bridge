@@ -39,7 +39,7 @@ const AgentCarrierSection = () => {
         <div
           className="program-card"
           style={{
-            padding: "4rem",
+            padding: "clamp(2rem, 8vw, 4rem)",
             background: "var(--glass-bg)",
             backdropFilter: "blur(10px)",
             border: "1px solid var(--glass-border)",
@@ -49,7 +49,7 @@ const AgentCarrierSection = () => {
         >
           <span
             style={{
-              fontSize: "0.8rem",
+              fontSize: "0.7rem",
               fontWeight: 800,
               color: "var(--text-main)",
               textTransform: "uppercase",
@@ -63,16 +63,17 @@ const AgentCarrierSection = () => {
           </span>
           <h2
             style={{
-              fontSize: "3rem",
+              fontSize: "clamp(1.5rem, 6vw, 3rem)",
               fontWeight: 900,
               marginBottom: "1.5rem",
+              lineHeight: 1.1,
             }}
           >
             {siteContent.home.agent.title}
           </h2>
           <p
             style={{
-              fontSize: "1.1rem",
+              fontSize: "1rem",
               lineHeight: 1.6,
               opacity: 0.8,
               marginBottom: "2.5rem",
@@ -85,7 +86,7 @@ const AgentCarrierSection = () => {
         <div
           className="program-card"
           style={{
-            padding: "4rem",
+            padding: "clamp(2rem, 8vw, 4rem)",
             background: "var(--color-accent)",
             border: "1px solid var(--color-accent)",
             borderRadius: "32px",
@@ -94,7 +95,7 @@ const AgentCarrierSection = () => {
         >
           <span
             style={{
-              fontSize: "0.8rem",
+              fontSize: "0.7rem",
               fontWeight: 800,
               textTransform: "uppercase",
               letterSpacing: "3px",
@@ -107,16 +108,17 @@ const AgentCarrierSection = () => {
           </span>
           <h2
             style={{
-              fontSize: "3rem",
+              fontSize: "clamp(1.5rem, 6vw, 3rem)",
               fontWeight: 900,
               marginBottom: "1.5rem",
+              lineHeight: 1.1,
             }}
           >
             {siteContent.home.carrier.title}
           </h2>
           <p
             style={{
-              fontSize: "1.1rem",
+              fontSize: "1rem",
               lineHeight: 1.6,
               fontWeight: 500,
               marginBottom: "2.5rem",

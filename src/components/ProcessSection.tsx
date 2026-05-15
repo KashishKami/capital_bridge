@@ -37,7 +37,7 @@ const ProcessStep = ({ step, idx }: { step: { title: string }; idx: number }) =>
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
-        padding: "3rem 2rem",
+        padding: "clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)",
         background: "var(--glass-bg)",
         border: "1px solid var(--glass-border)",
         borderRadius: "24px",
@@ -84,7 +84,7 @@ const ProcessStep = ({ step, idx }: { step: { title: string }; idx: number }) =>
       >
         {idx + 1}
       </div>
-      <h4 style={{ fontSize: "1.5rem", fontWeight: 800, zIndex: 2 }}>
+      <h4 style={{ fontSize: "clamp(1.1rem, 4vw, 1.5rem)", fontWeight: 800, zIndex: 2 }}>
         {step.title}
       </h4>
     </div>
@@ -140,8 +140,8 @@ const ProcessSection = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "2rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+            gap: "clamp(1rem, 3vw, 2rem)",
           }}
         >
           {siteContent.home.process.map((step, idx) => (

@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <h2
               style={{
-                fontSize: "2rem",
+                fontSize: "clamp(1.5rem, 4vw, 2rem)",
                 fontWeight: 900,
                 marginBottom: "1.5rem",
                 fontFamily: "var(--font-heading)",
@@ -179,24 +179,6 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Big Watermark */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "80px",
-          right: "5%",
-          fontSize: "clamp(3rem, 10vw, 8rem)",
-          fontWeight: 900,
-          opacity: 0.03,
-          pointerEvents: "none",
-          lineHeight: 1,
-          fontFamily: "var(--font-heading)",
-          whiteSpace: "nowrap",
-        }}
-      >
-        CAPITAL BRIDGE LLC
-      </div>
-
       <div
         style={{
           borderTop: "1px solid var(--glass-border)",
@@ -204,9 +186,37 @@ const Footer: React.FC = () => {
           textAlign: "center",
           color: "var(--text-muted)",
           fontSize: "0.9rem",
+          position: "relative",
+          marginTop: "4rem",
         }}
       >
-        © 2026 Capital Bridge LLC. All rights reserved.
+        {/* Big Watermark Centered on the Line */}
+        <div
+          style={{
+            position: "absolute",
+            top: "1px",
+            right: 0,
+            transform: "translateY(-100%)",
+            fontSize: "clamp(2rem, 6.5vw, 7.5rem)",
+            fontWeight: 950,
+            opacity: 0.05,
+            pointerEvents: "none",
+            lineHeight: 0.9,
+            fontFamily: "var(--font-heading)",
+            whiteSpace: "nowrap",
+            textAlign: "right",
+            width: "auto",
+            zIndex: 0,
+            letterSpacing: "-0.02em",
+            textTransform: "uppercase",
+          }}
+        >
+          CAPITAL BRIDGE LLC
+        </div>
+
+        <span style={{ position: "relative", zIndex: 1 }}>
+          © 2026 Capital Bridge LLC. All rights reserved.
+        </span>
       </div>
     </footer>
   );

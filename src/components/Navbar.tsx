@@ -8,6 +8,7 @@ const Navbar = () => {
   const location = useLocation();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   const isActive = (path: string) => {
@@ -37,6 +38,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
+    setMobileDropdown(null);
   }, [location.pathname]);
 
   const navLinks = [
@@ -343,22 +345,19 @@ const Navbar = () => {
             border: "none",
             color: "var(--text-main)",
             cursor: "pointer",
-            padding: "5px",
+            padding: "8px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "50%",
+            transition: "background 0.2s",
           }}
+          aria-label="Open menu"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            {isMobileMenuOpen ? (
-              <>
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </>
-            ) : (
-              <>
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </>
-            )}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
           </svg>
         </button>
       </div>
@@ -373,37 +372,102 @@ const Navbar = () => {
             width: "100%",
             height: "100vh",
             background: "var(--bg-primary)",
-            zIndex: 1000,
-            padding: "120px 10% 40px",
+            zIndex: 1002,
+            padding: "120px 8% 40px",
             display: "flex",
             flexDirection: "column",
-            gap: "1.5rem",
+            gap: "1.2rem",
             overflowY: "auto",
+            animation: "mobileMenuSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
+          {/* Close Button Inside Overlay */}
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
+              position: "absolute",
+              top: "30px",
+              right: "5%",
+              background: "var(--glass-bg)",
+              border: "1px solid var(--glass-border)",
+              color: "var(--text-main)",
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              zIndex: 1003,
+            }}
+            aria-label="Close menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
           {navLinks.map((link) => (
-            <div key={link.label}>
+            <div key={link.label} style={{ width: "100%" }}>
               {link.dropdown ? (
-                <div style={{ marginBottom: "1rem" }}>
-                  <div style={{
-                    color: "var(--color-accent)",
-                    fontWeight: 700,
-                    fontSize: "1.2rem",
-                    marginBottom: "0.8rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "1px"
-                  }}>
-                    {link.label}
+                <div style={{ marginBottom: "0.5rem" }}>
+                  <div
+                    onClick={() => setMobileDropdown(mobileDropdown === link.label ? null : link.label)}
+                    style={{
+                      color: "var(--text-main)",
+                      fontWeight: 800,
+                      fontSize: "1.4rem",
+                      padding: "0.5rem 0",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <span>{link.label}</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{
+                        transition: "transform 0.3s ease",
+                        transform: mobileDropdown === link.label ? "rotate(180deg)" : "none",
+                        opacity: 0.5,
+                      }}
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "1rem", paddingLeft: "1rem", borderLeft: "1px solid var(--glass-border)" }}>
+                  <div
+                    style={{
+                      maxHeight: mobileDropdown === link.label ? "500px" : "0",
+                      overflow: "hidden",
+                      transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      opacity: mobileDropdown === link.label ? 1 : 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.8rem",
+                      paddingLeft: "1rem",
+                      marginTop: mobileDropdown === link.label ? "0.5rem" : "0",
+                      borderLeft: "2px solid var(--color-accent)",
+                    }}
+                  >
                     {link.dropdown.map((item) => (
                       <Link
                         key={item.path}
                         to={item.path}
                         style={{
                           textDecoration: "none",
-                          color: location.pathname === item.path ? "var(--color-accent)" : "var(--text-main)",
+                          color: location.pathname === item.path ? "var(--color-accent)" : "var(--text-muted)",
                           fontSize: "1.1rem",
+                          fontWeight: location.pathname === item.path ? 700 : 500,
+                          padding: "0.4rem 0",
                         }}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
@@ -418,8 +482,10 @@ const Navbar = () => {
                   style={{
                     textDecoration: "none",
                     color: isActive(link.path) ? "var(--color-accent)" : "var(--text-main)",
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
+                    fontSize: "1.4rem",
+                    fontWeight: 800,
+                    display: "block",
+                    padding: "0.5rem 0",
                   }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -431,15 +497,16 @@ const Navbar = () => {
           <a
             href="tel:8885758884"
             style={{
-              padding: "1rem",
+              padding: "1.2rem",
               background: "var(--color-accent)",
               color: "#000",
               textDecoration: "none",
-              borderRadius: "12px",
+              borderRadius: "16px",
               textAlign: "center",
-              fontSize: "1.2rem",
+              fontSize: "1.1rem",
               fontWeight: 800,
-              marginTop: "2rem"
+              marginTop: "1.5rem",
+              boxShadow: "0 10px 20px rgba(255, 215, 0, 0.2)",
             }}
           >
             Call Us: (888) 575-8884
@@ -451,6 +518,10 @@ const Navbar = () => {
         @keyframes fadeIn {
           from { opacity: 0; transform: translateX(-50%) translateY(10px); }
           to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        @keyframes mobileMenuSlideIn {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 1024px) {
           .nav-desktop { display: none !important; }

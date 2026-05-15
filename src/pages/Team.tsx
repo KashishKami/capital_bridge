@@ -60,8 +60,10 @@ const TeamPage = () => {
         className="team-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "2.5rem",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          justifyContent: "center",
+          justifyItems: "center",
+          gap: "2rem",
           maxWidth: "1200px",
           margin: "0 auto",
         }}
@@ -71,7 +73,7 @@ const TeamPage = () => {
             key={member.id}
             className="team-card"
             style={{
-              padding: "2.5rem",
+              padding: "2rem",
               background: "var(--glass-bg)",
               backdropFilter: "blur(10px)",
               border: "1px solid var(--glass-border)",
@@ -80,7 +82,8 @@ const TeamPage = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gridColumn: index === 6 ? "2 / 3" : "auto",
+              width: "100%",
+              maxWidth: "340px",
             }}
           >
             <div
@@ -180,13 +183,10 @@ const TeamPage = () => {
       <style>{`
         @media (max-width: 1024px) {
           .team-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .team-card:nth-child(7) {
-             grid-column: auto !important;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
           }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
           .team-grid {
             grid-template-columns: 1fr !important;
           }

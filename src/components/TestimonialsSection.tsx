@@ -13,7 +13,7 @@ const TestimonialsSection: React.FC = () => {
       }}
     >
       <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-        <h2 style={{ fontSize: "clamp(2rem, 5vw, 2.5rem)", fontWeight: 900 }}>
+        <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", fontWeight: 900 }}>
           What Our Clients Say
         </h2>
         <div
@@ -82,7 +82,7 @@ const TestimonialsSection: React.FC = () => {
             <div
               style={{
                 fontWeight: 700,
-                fontSize: "1.2rem",
+                fontSize: "clamp(1rem, 4vw, 1.2rem)",
                 color: "var(--text-main)",
               }}
             >

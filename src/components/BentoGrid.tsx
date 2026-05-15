@@ -54,8 +54,9 @@ const BentoGrid: React.FC = () => {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: "1.5rem",
         }}
       >
@@ -65,6 +66,7 @@ const BentoGrid: React.FC = () => {
             ref={(el) => {
               if (el) cardsRef.current[idx] = el;
             }}
+            style={{ flex: "1 1 300px", maxWidth: "380px" }}
           >
             <BentoCard feature={feature} index={idx} />
           </div>

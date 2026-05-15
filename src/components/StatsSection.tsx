@@ -83,8 +83,8 @@ const StatsSection = () => {
         ref={statsContainerRef}
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: "2rem",
+          gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+          gap: "clamp(1rem, 3vw, 2rem)",
           maxWidth: "1200px",
           margin: "0 auto",
           textAlign: "center",
@@ -97,11 +97,11 @@ const StatsSection = () => {
               className="stat-value"
               data-target={stat.value}
               style={{
-                fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                fontSize: "clamp(1.8rem, 8vw, 4rem)",
                 fontWeight: 900,
                 color: "var(--text-main)",
                 marginBottom: "0.5rem",
-                letterSpacing: "-2px",
+                letterSpacing: "-1px",
               }}
             >
               0
