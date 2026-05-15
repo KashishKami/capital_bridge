@@ -3,7 +3,7 @@ import type { SiteContent } from "../types/content";
 export const siteContent: SiteContent = {
   home: {
     hero: {
-      headline: "Keep growing your business with Capital Bridge Logistics",
+      headline: "Keep growing your business with Capital Bridge LLC",
       subheadline:
         "We provide innovative transportation solutions for the most demanding supply chains in the world.",
     },
@@ -159,7 +159,7 @@ export const siteContent: SiteContent = {
       id: "industries",
       title: "Industries",
       description:
-        "SUPERIOR SERVICES WITH SPECIALIZED INDUSTRIES. There is list of industries is endless where we offer our services. With multiple carrier partners we offer all kind of Turk service to almost all of the industries. When your freight needs turn complex, we make shipping simple. With a wide variety of specialized industries and over 180 employees tasked with providing unparalleled customer care, Capital Bridge can handle all your logistics needs. Whether you’re shipping vital supplies across the country or ensuring streamlined services in your retail stores, our logistics professionals and top-tier technology optimize your supply chain management while always ensuring your shipments are our top priority.",
+        "SUPERIOR SERVICES WITH SPECIALIZED INDUSTRIES. There is list of industries is endless where we offer our services. With multiple carrier partners we offer all kind of Turk service to almost all of the industries. When your freight needs turn complex, we make shipping simple. With a wide variety of specialized industries and over 180 employees tasked with providing unparalleled customer care, Capital Bridge LLC can handle all your logistics needs. Whether you’re shipping vital supplies across the country or ensuring streamlined services in your retail stores, our logistics professionals and top-tier technology optimize your supply chain management while always ensuring your shipments are our top priority.",
     },
     automotive: {
       id: "automotive",
@@ -224,9 +224,9 @@ export const siteContent: SiteContent = {
     },
   },
   about: {
-    title: "About Capital Bridge",
+    title: "About Capital Bridge LLC",
     description:
-      "Capital Bridge is a privately held, non-asset-based logistics brokerage provider that introduces proprietary technology to small and medium shippers, aiding them in managing their transportation spend more efficiently. We have cross the value of 1000 shipments as of Aug 2022. We are fairly new company but things are moving so fast to be the best of the best in the freight industries.",
+      "Capital Bridge LLC is a privately held, non-asset-based logistics brokerage provider that introduces proprietary technology to small and medium shippers, aiding them in managing their transportation spend more efficiently. We have cross the value of 1000 shipments as of Aug 2022. We are fairly new company but things are moving so fast to be the best of the best in the freight industries.",
   },
   team: [
     {

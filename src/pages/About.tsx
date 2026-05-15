@@ -33,7 +33,7 @@ const About = () => {
         <h1
           className="reveal-text"
           style={{
-            fontSize: "clamp(3rem, 10vw, 5.5rem)",
+            fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
             fontWeight: 900,
             marginBottom: "2rem",
             lineHeight: 1,

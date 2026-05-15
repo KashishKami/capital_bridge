@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
                 color: "var(--text-main)",
               }}
             >
-              CapitalBridge
+              Capital Bridge LLC
             </h2>
           </Link>
           <p
@@ -194,7 +194,7 @@ const Footer: React.FC = () => {
           whiteSpace: "nowrap",
         }}
       >
-        CAPITAL BRIDGE
+        CAPITAL BRIDGE LLC
       </div>
 
       <div
@@ -206,8 +206,7 @@ const Footer: React.FC = () => {
           fontSize: "0.9rem",
         }}
       >
-        © {new Date().getFullYear()} Capital Bridge Logistics. All rights
-        reserved.
+        © 2026 Capital Bridge LLC. All rights reserved.
       </div>
     </footer>
   );

@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
         style={{ color: "var(--text-muted)", lineHeight: "1.8" }}
       >
         <p style={{ marginBottom: "1.5rem" }}>
-          At Capital Bridge Logistics, we are committed to protecting the
+          At Capital Bridge LLC, we are committed to protecting the
           privacy and security of our clients' personal information. This
           Privacy Policy outlines how we collect, use, and safeguard your
           personal data.
