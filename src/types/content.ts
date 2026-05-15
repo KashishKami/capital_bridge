@@ -22,6 +22,7 @@ export interface ContactInfo {
   address: string;
   hours?: string;
   accounting_email?: string;
+  rates_email?: string;
   linkedin?: string;
   dat_directory?: string;
 }

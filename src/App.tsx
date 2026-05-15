@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Team from "./pages/Team";
+import PhotoGallery from "./pages/PhotoGallery";
 import ServicePage from "./pages/ServicePage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -84,6 +85,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/our-team" element={<Team />} />
+              <Route path="/gallery" element={<PhotoGallery />} />
 
               {/* Dynamic Service/Solution Routes */}
               <Route

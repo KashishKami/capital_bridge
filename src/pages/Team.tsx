@@ -60,13 +60,13 @@ const TeamPage = () => {
         className="team-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
+          gridTemplateColumns: "repeat(3, 1fr)",
           gap: "2.5rem",
-          maxWidth: "1000px",
+          maxWidth: "1200px",
           margin: "0 auto",
         }}
       >
-        {siteContent.team.map((member) => (
+        {siteContent.team.map((member, index) => (
           <div
             key={member.id}
             className="team-card"
@@ -80,6 +80,7 @@ const TeamPage = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              gridColumn: index === 6 ? "2 / 3" : "auto",
             }}
           >
             <div
@@ -177,6 +178,14 @@ const TeamPage = () => {
 
 
       <style>{`
+        @media (max-width: 1024px) {
+          .team-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .team-card:nth-child(7) {
+             grid-column: auto !important;
+          }
+        }
         @media (max-width: 768px) {
           .team-grid {
             grid-template-columns: 1fr !important;

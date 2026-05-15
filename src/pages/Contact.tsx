@@ -10,6 +10,23 @@ import {
 import { siteContent } from "../data/content";
 
 const Contact = () => {
+  const [isLightMode, setIsLightMode] = React.useState(
+    document.body.classList.contains("light-mode")
+  );
+
+  React.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsLightMode(document.body.classList.contains("light-mode"));
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form submission logic would go here
@@ -284,7 +301,7 @@ const Contact = () => {
                   <div>
                     <h3 style={infoTitleStyle}>Email Addresses</h3>
                     <p style={infoTextStyle}>
-                      <strong>General:</strong>{" "}
+                      <strong>General Support:</strong>{" "}
                       <a href={`mailto:${siteContent.home.contact.email}`} style={infoLinkStyle}>
                         {siteContent.home.contact.email}
                       </a>
@@ -293,6 +310,12 @@ const Contact = () => {
                       <strong>Accounting:</strong>{" "}
                       <a href={`mailto:${siteContent.home.contact.accounting_email}`} style={infoLinkStyle}>
                         {siteContent.home.contact.accounting_email}
+                      </a>
+                    </p>
+                    <p style={infoTextStyle}>
+                      <strong>Rates:</strong>{" "}
+                      <a href={`mailto:${siteContent.home.contact.rates_email}`} style={infoLinkStyle}>
+                        {siteContent.home.contact.rates_email}
                       </a>
                     </p>
                   </div>
@@ -361,7 +384,10 @@ const Contact = () => {
         style={{
           width: "100%",
           height: "500px",
-          filter: "grayscale(1) invert(0.9)",
+          filter: isLightMode 
+            ? "none" 
+            : "grayscale(1) invert(0.9)",
+          transition: "filter 0.3s ease",
         }}
       >
         <iframe

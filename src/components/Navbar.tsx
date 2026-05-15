@@ -65,6 +65,7 @@ const Navbar = () => {
     },
     { path: "/about", label: "About" },
     { path: "/our-team", label: "Our Team" },
+    { path: "/gallery", label: "Photo Gallery" },
     { path: "/contact", label: "Contact Us" },
   ];
 
@@ -101,7 +102,7 @@ const Navbar = () => {
           src={theme === "dark" ? logoDark : logoLight}
           alt="Capital Bridge"
           style={{
-            height: "200px",
+            height: "220px",
             width: "auto",
             objectFit: "contain",
             display: "block",
