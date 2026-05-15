@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;900&display=swap");
 
 :root {
-  /* Permanent Dark Mode (Matte Black & Yellow) */
+  /* Default Dark Mode */
   --bg-primary: #0a0a0a;
   --bg-secondary: #111111;
   --text-main: #ffffff;
@@ -13,6 +13,17 @@
 
   --font-body: "Inter", sans-serif;
   --font-heading: "Outfit", sans-serif;
+}
+
+.light-mode {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-main: #0a0a0a;
+  --text-muted: #666666;
+  --color-accent: #ffd700;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.05);
 }
 
 * {
