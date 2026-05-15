@@ -53,19 +53,7 @@ const AgentCarrierSection = () => {
           <p style={{ fontSize: '1.1rem', lineHeight: 1.6, opacity: 0.8, marginBottom: '2.5rem' }}>
             {siteContent.home.agent.description}
           </p>
-          <button style={{ 
-            padding: '1rem 2rem', 
-            background: 'var(--color-accent)', 
-            color: '#000', 
-            border: 'none', 
-            borderRadius: '100px', 
-            fontWeight: 700,
-            cursor: 'pointer',
-            transition: 'transform 0.2s ease'
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          >Join the Program</button>
+
         </div>
 
         <div className="program-card" style={{ 
@@ -88,19 +76,7 @@ const AgentCarrierSection = () => {
           <p style={{ fontSize: '1.1rem', lineHeight: 1.6, fontWeight: 500, marginBottom: '2.5rem' }}>
             {siteContent.home.carrier.description}
           </p>
-          <button style={{ 
-            padding: '1rem 2rem', 
-            background: '#000', 
-            color: '#fff', 
-            border: 'none', 
-            borderRadius: '100px', 
-            fontWeight: 700,
-            cursor: 'pointer',
-            transition: 'transform 0.2s ease'
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          >Register as Carrier</button>
+
         </div>
       </div>
     </section>

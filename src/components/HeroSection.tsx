@@ -46,11 +46,11 @@ const HeroSection: React.FC = () => {
         background: 'linear-gradient(135deg, var(--color-primary-navy) 0%, #061020 100%)',
       }}
     >
-      <div style={{ maxWidth: '800px', zIndex: 10 }}>
+      <div style={{ maxWidth: '1100px', zIndex: 10 }}>
         <h1 
           ref={headingRef}
           style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
             fontWeight: 900,
             marginBottom: '1.5rem',
             lineHeight: 1.1,
@@ -66,8 +66,8 @@ const HeroSection: React.FC = () => {
             fontSize: 'clamp(1rem, 2vw, 1.25rem)',
             color: 'var(--text-muted)',
             marginBottom: '3rem',
-            maxWidth: '600px',
-            margin: '0 auto 3rem',
+            maxWidth: '800px',
+            margin: '0 auto 3.5rem',
           }}
         >
           {siteContent.home.hero.subheadline}

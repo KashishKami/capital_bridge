@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import PreLoader from './components/PreLoader';
-import ThemeToggle from './components/ThemeToggle';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -67,7 +66,6 @@ function App() {
     <Router>
       <div className="app-container">
         <ScrollToTop lenis={lenisInstance} />
-        <ThemeToggle />
         <Navbar />
         
         {!showHero && <PreLoader onComplete={handlePreLoaderComplete} />}

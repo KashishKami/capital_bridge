@@ -1,6 +1,90 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { siteContent } from '../data/content';
 import gsap from 'gsap';
+
+const ProcessStep = ({ step, idx }: { step: any, idx: number }) => {
+  const [isHovering, setIsHovering] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    gsap.to(cardRef.current, {
+      y: -10,
+      scale: 1.02,
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
+      borderColor: 'var(--color-accent)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    gsap.to(cardRef.current, {
+      y: 0,
+      scale: 1,
+      boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+      borderColor: 'var(--glass-border)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  };
+
+  return (
+    <div 
+      ref={cardRef}
+      className="process-step"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{ 
+        padding: '3rem 2rem', 
+        background: 'var(--glass-bg)', 
+        border: '1px solid var(--glass-border)',
+        borderRadius: '24px',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+        cursor: 'default',
+        transition: 'border-color 0.3s ease'
+      }}
+    >
+      {/* Subtle background glow when hovered */}
+      <div 
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 0%, transparent 70%)',
+          opacity: isHovering ? 1 : 0,
+          transition: 'opacity 0.3s ease',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div style={{ 
+        width: '60px', 
+        height: '60px', 
+        borderRadius: '50%', 
+        background: 'var(--color-accent)', 
+        color: '#000',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: '2rem',
+        fontWeight: 900,
+        fontSize: '1.2rem',
+        zIndex: 2
+      }}>
+        {idx + 1}
+      </div>
+      <h4 style={{ fontSize: '1.5rem', fontWeight: 800, zIndex: 2 }}>{step.title}</h4>
+    </div>
+  );
+};
 
 const ProcessSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -37,38 +121,7 @@ const ProcessSection = () => {
           gap: '2rem' 
         }}>
           {siteContent.home.process.map((step, idx) => (
-            <div 
-              key={idx} 
-              className="process-step"
-              style={{ 
-                padding: '3rem 2rem', 
-                background: 'var(--glass-bg)', 
-                border: '1px solid var(--glass-border)',
-                borderRadius: '24px',
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center'
-              }}
-            >
-              <div style={{ 
-                width: '60px', 
-                height: '60px', 
-                borderRadius: '50%', 
-                background: 'var(--color-accent)', 
-                color: '#000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '2rem',
-                fontWeight: 900,
-                fontSize: '1.2rem'
-              }}>
-                {idx + 1}
-              </div>
-              <h4 style={{ fontSize: '1.5rem', fontWeight: 800 }}>{step.title}</h4>
-            </div>
+            <ProcessStep key={idx} step={step} idx={idx} />
           ))}
         </div>
       </div>

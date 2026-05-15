@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
@@ -71,7 +72,7 @@ const Navbar = () => {
           letterSpacing: '-1px'
         }}
       >
-        CapitalBridge
+        <img src={logo} alt="Capital Bridge" style={{ height: '45px', width: 'auto', display: 'block' }} />
       </Link>
       
       <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>

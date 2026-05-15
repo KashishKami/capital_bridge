@@ -31,14 +31,14 @@ const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
+        {/* Important Links */}
         <div>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--text-main)' }}>Quick Links</h3>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--text-main)' }}>IMPORTANT LINKS</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <Link to="/" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>Home</Link>
-            <Link to="/about" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>About Us</Link>
-            <Link to="/services" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>Services</Link>
-            <Link to="/contact" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>Contact</Link>
+            <Link to="/solutions/ltl" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>LTL</Link>
+            <Link to="/solutions/truck-load" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>Truck Load</Link>
+            <Link to="/solutions/expedite" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>Expedite</Link>
+            <Link to="/privacy-policy" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', width: 'fit-content' }}>Privacy Policy</Link>
           </div>
         </div>
 

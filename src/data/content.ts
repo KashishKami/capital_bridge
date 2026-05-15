@@ -3,9 +3,10 @@ import type { SiteContent } from '../types/content';
 export const siteContent: SiteContent = {
   home: {
     hero: {
-      headline: 'Your Logistics Partner in Every Mile.',
+      headline: 'Keep growing your business with Capital Bridge Logistics',
       subheadline: 'We provide innovative transportation solutions for the most demanding supply chains in the world.',
     },
+    statsHeadline: 'Your Logistics Partner in Every Mile.',
     features: [
       {
         id: 'technology',

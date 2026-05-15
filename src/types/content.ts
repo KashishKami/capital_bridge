@@ -43,6 +43,7 @@ export interface ServicePageContent {
 
 export interface HomeContent {
   hero: HeroContent;
+  statsHeadline?: string;
   features: FeatureItem[];
   testimonials: Testimonial[];
   contact: ContactInfo;

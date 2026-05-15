@@ -71,7 +71,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ feature, index }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        cursor: 'pointer',
+        cursor: 'default',
         minHeight: '300px',
         position: 'relative',
         overflow: 'hidden',
